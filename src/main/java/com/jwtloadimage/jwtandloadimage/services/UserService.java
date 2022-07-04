@@ -10,6 +10,7 @@ import java.util.List;
 public interface UserService {
 
     User addUser(User user) throws IOException;
+    User addAdmin(User user) throws IOException;
     public Role addRole(Role role);
     public void addRoleToUser(String username,String roleName);
     public List<User> getAllUsers();

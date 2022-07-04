@@ -39,6 +39,12 @@ public class UserController {
         return ResponseEntity.created(uri).body(userService.addUser(user));
     }
 
+    @PostMapping("/admin/add")
+    public ResponseEntity<User> addAdmin(@RequestBody User user) throws IOException {
+        URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/user/admin/add").toUriString());
+        return ResponseEntity.created(uri).body(userService.addAdmin(user));
+    }
+
     @PostMapping("/role/add")
     public ResponseEntity<Role> addRole(@RequestBody Role role){
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/user/role/add").toUriString());

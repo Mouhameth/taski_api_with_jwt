@@ -48,6 +48,15 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
+    public User addAdmin(User user) throws IOException {
+
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        User loadUser =userRepository.save(user);
+        addRoleToUser(user.getUsername(), "ADMIN");
+        return loadUser;
+    }
+
+    @Override
     public Role addRole(Role role) {
         return roleRepository.save(role);
     }
